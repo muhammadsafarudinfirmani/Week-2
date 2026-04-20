@@ -7,7 +7,7 @@ public class produk {
     private int stok;
 
     //Constructor
-    public produk(String nama, double harga, int stok, String kategori) {
+    public produk(String nama, double harga, int stok) {
         this.nama = nama;
         this.harga = harga;
         this.stok = stok;
@@ -31,13 +31,20 @@ public class produk {
     public void setStok(int stok){
         this.stok = stok;
     }
+    public void kurangiStok(int jumlah){
+        if (jumlah > stok) {
+            System.out.println("melebihi stok yang tersedia");
+        }else {
+            stok = stok - jumlah;
+        }
+    }
 
-    // public void tampilkaninfo(){
-    //     System.out.println("Produk:" + nama);
-    //     System.out.println("Harga:" + harga);
-    //     System.out.println("Stok:" + stok);
-    //     System.out.println("--------------------");
-    // }
+    public void tampilkaninfo(){
+        System.out.println("Produk:" + nama);
+        System.out.println("Harga:" + harga);
+        System.out.println("Stok:" + stok);
+        System.out.println("--------------------");
+    }
 
     
 
