@@ -31,15 +31,21 @@ public class produk {
     public void setStok(int stok){
         this.stok = stok;
     }
-    public void kurangiStok(int jumlah){
-        if (jumlah > stok) {
-            System.out.println("melebihi stok yang tersedia");
-        }else {
-            stok = stok - jumlah;
+    public double hitungTotalHarga(int jumlah){
+        return harga * jumlah;
+    }
+    public void beli(int jumlahBeli){
+        if (jumlahBeli <= 0) {
+            System.out.println("jumlah beli harus lebih dari 0");
+            return;
+        }if (jumlahBeli > stok) {
+            System.out.println("stok" + nama + "tidak cukup! tersisa:" + stok);
+            return;
         }
+        stok -= jumlahBeli;
     }
 
-    public void tampilkaninfo(){
+    public void tampilkanInfo(){
         System.out.println("Produk:" + nama);
         System.out.println("Harga:" + harga);
         System.out.println("Stok:" + stok);

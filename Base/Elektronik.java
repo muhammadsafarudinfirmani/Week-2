@@ -4,16 +4,32 @@ package Base;
 
 public class Elektronik extends produk {
     private int masaGaransi;
+    private String merek;
+    private static final double PPN = 0.11;
 
 
-    public Elektronik(String nama, double harga, int stok, int masaGransi){
+    public Elektronik(String nama,String merek, double harga, int stok, int masaGransi){
         super(nama, harga, stok);
         this.masaGaransi = masaGaransi;
+        this.merek = merek;
+    }
+    //override
+    @Override
+    public void tampilkanInfo(){
+        super.tampilkanInfo();
+        System.out.println("masa garansi:" + masaGaransi);
+    }
+    //overloading
+    public double hitungPajak(int jumlahBeli){
+        return hitungTotalHarga(jumlahBeli) * PPN;
+    }
+    //version 2
+    public double hitungPajak(int jumlahBeli, double persenPajak){
+        return hitungTotalHarga(jumlahBeli) * (persenPajak / 100);
     }
 
-    public void tampilData(){
-        super.tampilkaninfo();
-        System.out.println("masa garansi:" + masaGaransi);
+    public double hitungHargaSetelahPajak(int jumlahBeli){
+        return hitungTotalHarga(jumlahBeli) * hitungPajak(jumlahBeli);
     }
 
     public void setGaransi(int masaGaransi){
