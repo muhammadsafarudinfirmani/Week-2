@@ -1,6 +1,6 @@
 package Base;
 
-public class produk {
+public abstract class produk {
     //atribut
     private String nama;
     private double harga;
@@ -32,8 +32,10 @@ public class produk {
         this.stok = stok;
     }
     public double hitungTotalHarga(int jumlah){
-        return harga * jumlah;
+        return harga * jumlah;        
     }
+
+    public abstract double hitungDiskon(int jumlahBeli);
     public void beli(int jumlahBeli){
         if (jumlahBeli <= 0) {
             System.out.println("jumlah beli harus lebih dari 0");
